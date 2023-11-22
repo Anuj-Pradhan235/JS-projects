@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BMI Calci</title>
+</head>
+<style>
+    body{
+        background-color: black;
+        color:white;
+    }
+    .container {
+    left      : 50%;
+    top       : 30%;
+    position  : absolute;
+    transform : translate(-50%, -50%);
+    border: 1px solid grey;
+    padding: 0px 20px 0px 20px;
+}
+</style>
+<body >
+    <div class="container" >
+        <h1>BMI Calculator</h1>
+        <form >
+            <p><label >Height in CM:</label>
+            <input type="text" id="height" /></p>
+            <p><label >Weight in KG:</label>
+            <input type="text" id="weight" /></p>
+            <button type="submit">Calculate</button>
+        </form>
+        <h2 id="results"></h2>
+        <h3>BMI Weight Guide: </h3>
+        <h4 id="guide"></h4>
+    </div>
+   
+</body>
+<script>
+    const form=document.querySelector("form");
+    form.addEventListener("submit",(event)=>{
+        event.preventDefault();
+        const height=parseInt(document.querySelector("#height").value);
+        const weight=parseInt(document.querySelector("#weight").value);
+        const results=document.querySelector("#results");
+        if((height<0)||(isNaN(height))||(height==='')){
+            //const val=document.createTextNode(`Please give a valid height ${height}`);
+            // results.appendChild(val);
+            results.innerHTML=`Please give a valid height ${height}`;
+            results.style.color="red";
+        }
+        else if((weight<0)||(isNaN(weight))||(weight==='')){
+            console.log("Hello world!")
+            //const val=document.createTextNode(`Please give a valid weight ${weight}`);
+            // results.appendChild(val);
+            results.innerHTML=`Please give a valid weight ${weight}`;
+            results.style.color="red";
+        }
+        else{
+            const bmi=(weight/((height*height)/10000)).toFixed(2);
+            //const val=document.createTextNode(`The BMI is ${bmi}`);
+            // results.appendChild(val);
+            results.innerHTML=`BMI: ${bmi}`
+            const guide=document.querySelector("#guide");
+            if(bmi<18.60){guide.innerHTML="Under Weight";
+        guide.style.color="red";results.style.color="red"}
+            else if(bmi>=18.60 && bmi<=24.90){guide.innerHTML="Normal Range";guide.style.color="green";results.style.color="green"}
+            else {guide.innerHTML="Overweight";guide.style.color="red";results.style.color="red"}
+            
+        }
+
+    })
+</script>
+</html>

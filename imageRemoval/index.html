@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Removal</title>
+</head>
+<body>
+    <ul class="fruits">
+        <li><img src="mango.jpeg" id="mango" /></li>
+        <li><img src="pineapple.jpeg" id="pineapple" /></li>
+        <li><img src="strawberry.jpeg" id="strawberry" /></li>
+        <li><img src="watermelon.jpeg" id="watermelon" /></li>
+        <li>Fruits</li>
+    </ul>
+</body>
+<script>
+    const ul=document.querySelector(".fruits");
+    ul.addEventListener("click",(event)=>{
+        if(event.target.tagName==="IMG"){
+        const removeIt=event.target.parentNode;
+        removeIt.remove();
+    }
+    },false)
+</script>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Color Changer</title>
+    <style>
+        .button{
+            margin: 50px;
+            font-size: 35px;
+            border: 3px solid black;
+        }
+    </style>
+</head>
+<body>
+    <span class="button" id="yellow">Yellow</span>
+    <span class="button" id="green">Green</span>
+    <span class="button" id="red">Red</span>
+    <span class="button" id="pink">Pink</span>
+    <span class="button" id="purple">Purple</span>
+    <span class="button" id="grey">Grey</span>
+    <span class="button" id="violet">Violet</span>
+</body>
+<script>
+    const spn=document.querySelectorAll(".button");
+    spn.forEach((item)=>{
+        item.style.backgroundColor=item.id;
+    })
+    spn.forEach((item)=>{
+        const btn=item.addEventListener("click",()=>{
+            document.body.style.backgroundColor=item.id;
+            console.log(`Clicked ${item.id} !`)
+        });
+
+    })
+</script>
+</html>
