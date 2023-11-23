@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BackGroundColorChanger</title>
+</head>
+<style>
+    body{
+        background-color: black;
+        color: white;
+    }
+</style>
+<body>
+    <h1>---Set the color of the BackGround---</h1>
+    <button id="start"">Start</button>
+    <button id="stop">Stop</button>
+</body>
+<script>
+    const body=document.querySelector("body");
+    const start=document.querySelector("#start");
+    const stop=document.querySelector("#stop");
+    const randColor=()=>{
+        const hex="0123456789ABCDEF";
+        let color="#";
+        for(let i=0;i<6;i++){
+            color+=hex[Math.floor(Math.random()*16)];
+        }
+        return color;
+    }
+    let ref;
+    start.addEventListener("click",(event)=>{
+      
+        ref= setInterval(()=>{
+            const hex=randColor();
+            body.style.backgroundColor=hex;
+            console.log(hex);
+        },1000)
+    })
+    stop.addEventListener("click",()=>{
+        clearInterval(ref);
+    })
+</script>
+</html>

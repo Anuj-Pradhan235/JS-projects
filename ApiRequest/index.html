@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Api Resquest</title>
+</head>
+<style>
+    body{
+        background-color: black;
+        color:white;
+    }
+</style>
+<body>
+  <button id="showInfo">ShowInfo</button>
+  <div id="info">
+    
+
+  </div>
+</body>
+<script>
+  const xhr=new XMLHttpRequest();
+  const requestURL="https://api.github.com/users/Anuj-Pradhan235";
+  xhr.open('GET',requestURL);
+  let imageUrl;
+  let userName;
+  let followers;
+  xhr.onreadystatechange=function(){
+    console.log(xhr.readyState);
+    if(xhr.readyState===4){
+        const data=JSON.parse(this.responseText);
+        imageUrl=data.avatar_url
+        userName=data.login
+        followers=data.followers;
+        console.log(data);
+    }
+  }
+  xhr.send();
+  const showIfo=document.querySelector("#showInfo");
+  const info=document.querySelector("#info");
+  showIfo.addEventListener("click",(event)=>{
+    showIfo.style.display="none";
+    const img=document.createElement("img");
+    const h1=document.createElement("h1");
+    const h2=document.createElement("h2");
+    img.setAttribute("src",imageUrl);
+    h1.innerHTML=`UserName: ${userName}`;
+    h2.innerHTML=`Followers: ${followers}`;
+    info.appendChild(img);
+    info.appendChild(h1);
+    info.appendChild(h2);
+  })
+  
+</script>
+</html>

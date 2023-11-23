@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Print Keyboard Keys</title>
+</head>
+<style>
+    body{
+        background-color: black;
+        color: white;
+    }
+    #keys{
+        margin: 200px;
+    }
+</style>
+<body>
+<div id="insert">
+    <div id="keys">Please click any keyword and see the magic: <br> </div> 
+</div>    
+</body>
+<script>
+    const insert=document.querySelector("#insert");
+    const keys=document.querySelector("#keys");
+    window.addEventListener("keypress",(event)=>{
+        const text=document.createTextNode(event.key);
+        console.log(event.key);
+        keys.appendChild(text);
+        })
+
+</script>
+</html>
